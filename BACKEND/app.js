@@ -2,6 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import userRouter from "./routes/user-route";
+import adminRouter from "./routes/admin.route";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -12,6 +16,8 @@ app.use(cors({
 app.use(express.json());
 //middleware
 app.use("/users", userRouter);
+app.use("/admin", adminRouter);
+
 mongoose
 .connect('mongodb://127.0.0.1:27017/moviesdb')
   .then(() => app.listen(5000, () => {

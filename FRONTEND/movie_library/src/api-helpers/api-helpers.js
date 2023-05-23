@@ -19,32 +19,32 @@ export const getAllMovies = async () => {
         email: data.email,
         password: data.password,
       })
-      .then((res) => console.log(res))
+      
       .catch((err) => console.log(err));
   
-    // if (res.status !== 200 && res.status !== 201) {
-    //   console.log("Unexpected Error Occurred");
-    // }
+    if (res.status !== 200 && res.status !== 201) {
+      console.log("Unexpected Error Occurred");
+    }
   
     const resData = await res.data;
     return resData;
   };
   
-//   export const sendAdminAuthRequest = async (data) => {
-//     const res = await axios
-//       .post("/admin/login", {
-//         email: data.email,
-//         password: data.password,
-//       })
-//       .catch((err) => console.log(err));
+  export const sendAdminAuthRequest = async (data) => {
+    const res = await axios
+      .post("/admin/login", {
+        email: data.email,
+        password: data.password,
+      })
+      .catch((err) => console.log(err));
   
-//     if (res.status !== 200) {
-//       return console.log("Unexpectyed Error");
-//     }
+    if (res.status !== 200) {
+      return console.log("Unexpected Error");
+    }
   
-//     const resData = await res.data;
-//     return resData;
-//   };
+    const resData = await res.data;
+    return resData;
+  };
 
 // export const getAllUsers = async (UserData) => {
 //     const res = await fetch('https://localhost:5000/moviesdb', {
