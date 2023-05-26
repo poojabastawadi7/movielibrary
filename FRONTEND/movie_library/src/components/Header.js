@@ -29,8 +29,7 @@ export default function Header() {
             <Link to='/admin' className="btn btn-link text-dark" type="button">Admin</Link>
             </>
           )}
-
-            {isUserLoggedIn && (
+             {isUserLoggedIn && (
             <>
             <Link to='/profile' className="btn btn-link me-md-2 text-dark" type="button">Profile</Link>
             <Link onClick={() => logout(false)} to='/' className="btn btn-link text-dark" type="button">Logout</Link>
@@ -43,8 +42,8 @@ export default function Header() {
             <Link to='/profile' className="btn btn-link text-dark" type="button">Profile</Link>
             <Link onClick={() => logout(true)} to='/' className="btn btn-link text-dark" type="button">Logout</Link>
 
-            </>
-          )}
+            </>  
+            )}  
          </div>
     </div>
     </nav>

@@ -1,24 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import magicflute from '../assets/magicflute.jpg';
 import MI from "../assets/mission-impossible-dead-reckoning-part-one.jpg";
 import TheLittleMermaid from "../assets/the-little-mermaid.jpg";
-import MovieItem from './Movies/MovieItem';
 import { Link } from 'react-router-dom';
+import { getAllMovies } from '../api-helpers/api-helpers';
+import MovieItem from './Movies/MovieItem';
 
 
 export default function HomePage() {
 
-  const items = [
-    {image:"https://static-koimoi.akamaized.net/wp-content/new-galleries/2023/02/the-night-manager-01.jpg", 
-     title: "Night Manager", text: "", alt: ""},
-    {image:"https://assets.gadgets360cdn.com/pricee/assets/product/202301/Bholaa_1674473942.jpg",
-     title: "Bholaa", text: "", alt: ""},
-    {image:"https://static-koimoi.akamaized.net/wp-content/new-galleries/2022/03/pathaan-03.jpg", 
-     title: "Pathaan", text: "", alt: ""},
-    {image:"https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg", 
-     title: "Jawan", text: "", alt: ""},
+  
+  const [movies, setMovies] = useState() ;
+  
+  useEffect(() => {
+    getAllMovies()
+    .then((data) => setMovies(data.movies))
+    .catch((err) => console.log(err));
+  }, []);
 
-  ]
+
   return (
     <>
     {/* <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -112,10 +112,15 @@ export default function HomePage() {
 
   <div className='container'>
   <div className="row justify-content-center">
+
     
-    {items.map((item) => (
-      <MovieItem key={item.id} image={item.image} title={item.title} text={item.text} alt={item.alt}/>
-    )
+    
+     {movies && 
+     movies
+     .slice(0, 4)
+     .map((movie, index) => (
+      <MovieItem id={movie._id} key={index} image={movie.image} title={movie.title} text={movie.text} alt={movie.alt}/>
+      )
       
     )}
       

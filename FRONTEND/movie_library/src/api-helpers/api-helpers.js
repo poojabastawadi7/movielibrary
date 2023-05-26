@@ -9,6 +9,7 @@ export const getAllMovies = async () => {
   
     const data = await res.data;
     return data;
+    
   };
   
   export const sendUserAuthRequest = async (data, signup) => {
@@ -23,7 +24,7 @@ export const getAllMovies = async () => {
       .catch((err) => console.log(err));
   
     if (res.status !== 200 && res.status !== 201) {
-      console.log("Unexpected Error Occurred");
+      return console.log("Unexpected Error Occurred");
     }
   
     const resData = await res.data;
