@@ -4,6 +4,7 @@ import cors from "cors";
 import userRouter from "./routes/user-route";
 import adminRouter from "./routes/admin.route";
 import dotenv from "dotenv";
+import movieRouter from "./routes/movie.route";
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ app.use(express.json());
 //middleware
 app.use("/users", userRouter);
 app.use("/admin", adminRouter);
+app.use("/movie", movieRouter);
+
 
 mongoose
 .connect('mongodb://127.0.0.1:27017/moviesdb')

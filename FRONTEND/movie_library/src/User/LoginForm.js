@@ -66,7 +66,7 @@ import { Link } from 'react-router-dom';
               </div>
              
               <div className="d-grid gap-2 col-5 mx-auto">
-                <button className="btn btn-primary" type="submit">{isSignup? "Signup" : "Login"}</button>
+                <button className="btn btn-primary" type="button-submit">{isSignup? "Signup" : "Login"}</button>
                {!isAdmin && (<button onClick={() => setIsSignup(!isSignup)} className="btn btn-outline-secondary" type="button">Switch To {isSignup? "Login" : "Signup"}</button>)
                }</div>
           </form> 

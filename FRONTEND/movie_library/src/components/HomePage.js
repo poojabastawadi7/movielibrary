@@ -3,8 +3,22 @@ import magicflute from '../assets/magicflute.jpg';
 import MI from "../assets/mission-impossible-dead-reckoning-part-one.jpg";
 import TheLittleMermaid from "../assets/the-little-mermaid.jpg";
 import MovieItem from './Movies/MovieItem';
+import { Link } from 'react-router-dom';
+
 
 export default function HomePage() {
+
+  const items = [
+    {image:"https://static-koimoi.akamaized.net/wp-content/new-galleries/2023/02/the-night-manager-01.jpg", 
+     title: "Night Manager", text: "", alt: ""},
+    {image:"https://assets.gadgets360cdn.com/pricee/assets/product/202301/Bholaa_1674473942.jpg",
+     title: "Bholaa", text: "", alt: ""},
+    {image:"https://static-koimoi.akamaized.net/wp-content/new-galleries/2022/03/pathaan-03.jpg", 
+     title: "Pathaan", text: "", alt: ""},
+    {image:"https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg", 
+     title: "Jawan", text: "", alt: ""},
+
+  ]
   return (
     <>
     {/* <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -61,7 +75,7 @@ export default function HomePage() {
 
 <div className="section3">
       <div className="row">
-          <div className="col-lg-8 mx-auto w-80 p-4">
+          <div className="col-lg-9 mx-auto w-90 p-4">
               <div id="demo" className="carousel slide" data-bs-ride="carousel">
 
                   <div className="carousel-indicators">
@@ -94,7 +108,28 @@ export default function HomePage() {
                </div>
   </div>
 
-  <MovieItem />
+  <p className='h3 text-center mb-4'>Recent Releases</p>
+
+  <div className='container'>
+  <div className="row justify-content-center">
+    
+    {items.map((item) => (
+      <MovieItem key={item.id} image={item.image} title={item.title} text={item.text} alt={item.alt}/>
+    )
+      
+    )}
+      
+         <Link to="/movies" className= "d-grid gap-2 d-md-flex justify-content-md-end">
+         <p className="fst-italic fs-4">View all
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+          </p></Link>
+      
+
+</div>
+</div> 
+  
 
    </>
 

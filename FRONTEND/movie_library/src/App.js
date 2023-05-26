@@ -4,11 +4,20 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import UserLogin from './User/UserLogin'; 
 import Admin from './Admin/Admin';
-import MovieItem from './components/Movies/MovieItem';
-import UserLoginForm from './User/LoginForm';
 import Modal from './components/Modal';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import AllMovies from './components/Movies/AllMovies';
 
 function App() {
+
+  const isAdminLoggedIn = useSelector((state) => state.admin.isLoggedIn);
+  const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  console.log("isAdminLoggedIn", isAdminLoggedIn);
+  console.log("isUserLoggedIn", isUserLoggedIn);
+
+ 
+ 
   return (
     <>
    
@@ -19,9 +28,9 @@ function App() {
     <section>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/userlogin" element={<UserLogin />} />
+        <Route path="/user" element={<UserLogin />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/userlogin" element={<Modal />} />
+        <Route path="/movies" element={<AllMovies />} />
       </Routes>
       </section>
 
