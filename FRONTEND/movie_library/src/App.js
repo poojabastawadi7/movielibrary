@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import AllMovies from './components/Movies/AllMovies';
 import { adminActions, userActions } from './store';
+import BuyOrRent from './components/GetMovie/BuyOrRent';
+import UserProfile from './components/Profile/UserProfile';
+import AddMovie from './components/Movies/AddMovie';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +43,12 @@ function App() {
         <Route path="/user" element={<UserLogin />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/movies" element={<AllMovies />} />
+        <Route path="/buyorrent/:id" element={<BuyOrRent />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/addmovie" element={<AddMovie/>} />
+
+
+
       </Routes>
       </section>
 

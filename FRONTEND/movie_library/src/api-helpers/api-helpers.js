@@ -47,6 +47,17 @@ export const getAllMovies = async () => {
     return resData;
   };
 
+  export const getMovieDetails = async (id) => {
+    const res= await axios.get(`/movie/${id}`).catch((err) => console.log(err));
+
+    if (res.status !== 200){
+      return console.log("Unexpected error");
+    }
+
+    const resData = await res.data;
+    return resData;
+  }
+
 // export const getAllUsers = async (UserData) => {
 //     const res = await fetch('https://localhost:5000/moviesdb', {
 //         method: 'GET',

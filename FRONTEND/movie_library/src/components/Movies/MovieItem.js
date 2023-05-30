@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function MovieItem({image, title, text, alt}) {
+export default function MovieItem({image, title, text, alt, id}) {
   return (
    
       <div className="col-sm-3">
@@ -12,7 +12,7 @@ export default function MovieItem({image, title, text, alt}) {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{text}</p>
-            <Link to="/" className="btn btn-primary">Buy or Rent</Link>
+            <Link to={`/buyorrent/${id}`} className="btn btn-primary">Buy or Rent</Link>
         </div>
       </div>
       </div>
