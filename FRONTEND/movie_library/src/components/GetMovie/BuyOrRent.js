@@ -22,7 +22,7 @@ export default function BuyOrRent() {
        <div className='d-flex p-2'>
         <div className='d-flex flex-column pt-4 w-50 me-auto'>
 
-            <img src={movie.image} alt={ movie.title} style={{width:"80%", height: "300px"}} />
+            <img src={movie.posterUrl} alt={ movie.title} style={{width:"80%", height: "300px"}} />
             <div className='mt-3 w-80 p-2'>
                 <p className='p-2'>Movie Description </p>
                 <p className='p-2'>Movie Actors </p>

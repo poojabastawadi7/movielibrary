@@ -12,6 +12,7 @@ import { adminActions, userActions } from './store';
 import BuyOrRent from './components/GetMovie/BuyOrRent';
 import UserProfile from './components/Profile/UserProfile';
 import AddMovie from './components/Movies/AddMovie';
+import AdminProfile from './components/Profile/AdminProfile';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/buyorrent/:id" element={<BuyOrRent />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/addmovie" element={<AddMovie/>} />
+        <Route path="/admin-profile" element={<AdminProfile />} />
 
 
 

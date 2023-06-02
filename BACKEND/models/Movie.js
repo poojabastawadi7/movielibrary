@@ -9,9 +9,16 @@ const movieSchema = new mongoose.Schema({
         type: String,
 
     },
-    image: {
+    posterUrl: {
         type: String,
         required: true,
+    },
+    actors:{
+        type: Array,
+    },
+    releaseDate: {
+        type: Date,
+
     },
     admin:{
         type: String,

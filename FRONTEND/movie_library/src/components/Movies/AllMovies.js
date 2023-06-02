@@ -19,7 +19,7 @@ export default function AllMovies() {
 
     {movies && 
       movies.map((movie, index) => (
-      <MovieItem id={movie._id} key={index} image={movie.image} title={movie.title} text={movie.text} alt={movie.alt}/>
+      <MovieItem id={movie._id} key={index} posterUrl={movie.posterUrl} title={movie.title} description={movie.description} alt={movie.alt}/>
       )
     
     )}  

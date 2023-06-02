@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
 import Movie from "../models/Movie";
+import mongoose from "mongoose";
 
 export const addMovie = async (req, res, next) => {
     const extractedToken = req.headers.authorization.split(" ")[1];  
-    // why split is? first ele = Bearer sec is token
+    // why split is? first ele = Bearer, sec is token
 
     if(!extractedToken && extractedToken.trim() === ""){
         return res.status(404).json({ message: "Token Not Found" });
@@ -12,11 +13,11 @@ export const addMovie = async (req, res, next) => {
     console.log(extractedToken);
     let adminId ;
 
-    //verify token of admin
+    //verify token of admin 
 
-    jwt.verify(extractedToken, process.env.SECRET_KEY,(err, decrypted) => {
+    jwt.verify(extractedToken, process.env.SECRET_KEY, (err, decrypted) => {
         if(err) {
-            return res.status(400).json({ message : '${err.message}'})
+            return res.status(400).json({ message : `${err.message}`})
         }
         else {
             adminId = decrypted.id ;
@@ -24,16 +25,18 @@ export const addMovie = async (req, res, next) => {
         }
     });
 
-    //create new movie
-        const { title, text, image, admin} = req.body;
+    //creating a new movie
+        const { title, description, posterUrl, releaseDate, actors} = req.body;
         if(!title && title.trim() === "" &&
-            !image && image.trim() === ""){
+            !description && description.trim() === "" &&
+            !posterUrl && posterUrl.trim() === "" 
+            ){
                 return res.status(422).json({ message: "Invalid inputs"});
             }
 
         let movie;
         try{
-            movie = new Movie({title, text, image, admin:adminId});
+            movie = new Movie({title, description, posterUrl, admin:adminId, releaseDate: new Date(`${releaseDate}`), actors});
             movie = await movie.save();
         } catch(err) {
             return console.log(err);

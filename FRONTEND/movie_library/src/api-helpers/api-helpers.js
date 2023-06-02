@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getAllMovies = async () => {
     const res = await axios.get("/movie").catch((err) => console.log(err));
-  
+
     if (res.status !== 200) {
       return console.log("No Data");
     }
@@ -56,6 +56,33 @@ export const getAllMovies = async () => {
 
     const resData = await res.data;
     return resData;
+  }
+
+  export const addMovie = async (data) => {
+    const res = await axios.post("/movie",
+    
+    {
+      title: data.title,
+      description: data.description,
+      releaseDate: data.releaseDate,
+      posterUrl: data.posterUrl,
+      actors: data.actors,
+      admin: localStorage.getItem("adminId"),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        },
+        
+        ).catch((err) => console.log(err));
+
+        if (res.status !== 201) {
+          return console.log("Unexpected Error Occcured"); 
+        }
+
+        const resData = await res.data;
+        return resData;
   }
 
 // export const getAllUsers = async (UserData) => {
