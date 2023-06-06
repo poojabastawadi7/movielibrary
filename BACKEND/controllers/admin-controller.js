@@ -67,7 +67,7 @@ export const adminLogin = async (req, res, next) =>  {
             expiresIn: "7d",
         });
 
-       console.log(token);
+    //    console.log(token);
 
 
 

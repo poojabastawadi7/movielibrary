@@ -4,7 +4,6 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import UserLogin from './User/UserLogin'; 
 import Admin from './Admin/Admin';
-import Modal from './components/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import AllMovies from './components/Movies/AllMovies';
@@ -36,18 +35,26 @@ function App() {
    
     <div>
     <Header />   
-    {/* <HomePage />      */}
-    {/* <UserLogin /> */}
+   
     <section>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={<AllMovies />} />
+        
+        { !isUserLoggedIn && !isAdminLoggedIn && <>        
         <Route path="/user" element={<UserLogin />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/movies" element={<AllMovies />} />
+         </> }
+
+        {/* { isUserLoggedIn && !isAdminLoggedIn && <> */}
         <Route path="/buyorrent/:id" element={<BuyOrRent />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/user" element={<UserProfile />} />
+        {/* </>} */}
+
+        {isAdminLoggedIn && !isUserLoggedIn && <>
         <Route path="/addmovie" element={<AddMovie/>} />
         <Route path="/admin-profile" element={<AdminProfile />} />
+        </>}
 
 
 

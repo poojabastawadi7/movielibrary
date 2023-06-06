@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function MovieItem({posterUrl, title, description, alt, id}) {
   return (
    
-      <div className="col-sm-3">
+      <div className="col-12 col-sm-6 col-md-4 col-lg-3">
        <div className="card shadow p-3 mb-3 bg-body-tertiary rounded" style={{width:"15rem"}} >
         <img src={posterUrl} 
           className="card-img-top" alt={alt} style={{height: "12rem"}}/>

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './UserProfile.module.css';
+import { getAllUsers, getUserDetails } from '../../api-helpers/api-helpers';
 
 export default function UserProfile() {
 
- 
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+  
+    getUserDetails()
+    .then((data) => setUser(data.user))
+    .catch((err) => console.log(err))
+  }, [])
+  
   
   return (
     <>
@@ -16,9 +25,9 @@ export default function UserProfile() {
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
         </svg></span>
-        <span className="border border-2 rounded-pill text-center w-10"><p className='mt-2 w-20'>User.name</p></span>
-        <span className="border border-2 rounded-pill text-center w-10 mt-2"><p className='mt-2'>User.email</p></span>
-
+      { user && <> <span className="border border-2 rounded-pill text-center w-10"><p className='mt-2 w-20'>{user.name}</p></span>
+      <span className="border border-2 rounded-pill text-center w-10 mt-2"><p className='mt-2'>{user.email}</p></span>
+      </>}
 
       </div>
       <div className='d-flex flex-column p-2' style={{width:"70%", height:"100%"}}>
@@ -40,22 +49,7 @@ export default function UserProfile() {
                 <td>Mark</td>
                 
               </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                
-              </tr>
-             
+              
              
             </tbody>
           </table>

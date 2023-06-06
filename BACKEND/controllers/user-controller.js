@@ -112,3 +112,21 @@ export const login = async (req, res, next) => {
             return res.status(200).json({message: "Login Successful", id:existingUser._id})
     };
 
+    export const getUserById = async (req, res, next) => {
+        const id = req.params.id;
+        let user;
+    
+        try {
+            user = await User.findById(id)
+        }catch(err) {
+            return console.log(err);
+        }
+    
+        if(!user) {
+            return res.status(404).json({ message: "Invalid user ID"})
+        }
+    
+        return res.status(200).json({ user })
+    }
+    
+

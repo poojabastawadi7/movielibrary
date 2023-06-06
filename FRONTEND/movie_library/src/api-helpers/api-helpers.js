@@ -1,4 +1,15 @@
 import axios from "axios";
+export const getAllUsers = async () => {
+  const res = await axios.get("/user").catch((err) => console.log(err));
+
+  if (res.status !== 200) {
+    return console.log("No Data");
+  }
+
+  const data = await res.data;
+  return data;
+  
+};
 
 export const getAllMovies = async () => {
     const res = await axios.get("/movie").catch((err) => console.log(err));
@@ -14,7 +25,7 @@ export const getAllMovies = async () => {
   
   export const sendUserAuthRequest = async (data, signup) => {
     const res = await axios
-      .post(`/users/${signup ? "signup" : "login"}`,
+      .post(`/user/${signup ? "signup" : "login"}`,
       {
         name: signup ? data.name : "",
         email: data.email,
@@ -84,6 +95,20 @@ export const getAllMovies = async () => {
         const resData = await res.data;
         return resData;
   }
+
+  export const getUserDetails = async () => {
+    const id = localStorage.getItem("userId");
+    
+    const res = await axios.get(`/user/${id}`).catch((err) => console.log(err));
+
+    if (res.status !== 200){
+      return console.log("Unexpected error");
+    }
+
+    const resData = await res.data;
+    return resData;
+  }
+
 
 // export const getAllUsers = async (UserData) => {
 //     const res = await fetch('https://localhost:5000/moviesdb', {

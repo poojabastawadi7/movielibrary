@@ -16,7 +16,7 @@ app.use(cors({
 }))
 app.use(express.json());
 //middleware
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/movie", movieRouter);
 
